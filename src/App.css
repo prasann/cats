@@ -4,6 +4,7 @@
 
 .header {
     height: 50px;
+    background: black;
     border-bottom: 1px solid #222;
 }
 
@@ -18,5 +19,15 @@
 }
 
 .content .chooser {
+    margin-top: 10px;
     height: 750px;
+}
+
+input[type="image"]{
+    margin: 5px;
+    border: 2px solid #333333;
+    border-radius: 4px;
+    padding: 10px;
+    height: 100px;
+    width: 100px;
 }
