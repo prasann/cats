@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Chooser.css';
 
 const CatChooser = () => {
   return <div>
@@ -15,9 +16,33 @@ const CatChooser = () => {
   </div>;
 };
 
+const FilterChooser = () => {
+  return <div>
+    <h2>Filter Controls</h2>
+
+    <div className="filter-controls">
+    <div className="filter-control">
+      <label htmlFor="blur-filter" >Blur</label>
+      <input type="range" min="0" max="10"/>
+    </div>
+    <div className="filter-control">
+      <label htmlFor="morph-filter" >Morph</label>
+      <input type="range" min="0" max="10"/>
+    </div>
+    <div className="filter-control">
+      <label htmlFor="haze-filter" >Haze</label>
+      <input type="range" min="0" max="10"/>
+    </div>
+    </div>
+  </div>;
+};
+
 class Chooser extends Component {
   render() {
-    return <CatChooser/>;
+   return <div>
+      <CatChooser/>
+      <FilterChooser/>
+    </div>;
   }
 }
 
