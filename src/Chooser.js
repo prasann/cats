@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Chooser.css';
+import Filter from './Filter';
 
 const Cat = (props) => {
   return <input type="image" alt={props.name}
@@ -25,20 +25,13 @@ const CatChooser = (props) => {
 const FilterChooser = () => {
   return <div>
     <h2>Filter Controls</h2>
-
     <div className="filter-controls" >
-      <div className="filter-control" >
-        <label htmlFor="blur-filter" >Blur</label>
-        <input type="range" min="0" max="10" />
-      </div>
-      <div className="filter-control" >
-        <label htmlFor="morph-filter" >Morph</label>
-        <input type="range" min="0" max="10" />
-      </div>
-      <div className="filter-control" >
-        <label htmlFor="haze-filter" >Haze</label>
-        <input type="range" min="0" max="10" />
-      </div>
+      <Filter label="Blur" min="0" max="50" step="1" />
+      <Filter label="Morph-Erode" min="1" max="8" step="0.5" />
+      <Filter label="Morph-Dilate" min="1" max="50" step="1" />
+      <Filter label="Color-Saturate" min="0.1" max="4" step="0.1" />
+      <Filter label="Hue" min="1" max="360" step="10" />
+      <Filter label="Displacement" min="0" max="80" step="5" />
     </div>
   </div>;
 };
