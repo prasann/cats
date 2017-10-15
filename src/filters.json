@@ -1,0 +1,9 @@
+{
+  "blur": {
+    "label": "Blur",
+    "min": 0,
+    "max": 2,
+    "step": 1,
+    "default": 5
+  }
+}

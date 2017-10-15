@@ -4,7 +4,8 @@ import Viewer from './Viewer';
 const mapDispatchers = dispatch => ({});
 
 const mapStateToProps = (state) => ({
-  cat: state.cats.cat
+  cat: state.app.cat,
+  filters: state.app.filters,
 });
 
 export default connect(mapStateToProps, mapDispatchers)(Viewer);

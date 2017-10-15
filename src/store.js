@@ -9,10 +9,10 @@ const omit = (object, blacklisted_keys) => Object.keys(object)
   .filter((key) => blacklisted_keys.indexOf(key) < 0)
   .reduce((newObj, key) => Object.assign(newObj, { [key]: object[key] }), {});
 
-const appReducer = (state = { cat: '', filters: {} }, action) => {
+const appReducer = (state = { cat: '', filters: { blur: 2 } }, action) => {
   switch (action.type) {
     case actionTypes.SELECT_CAT :
-      return { cat: action.cat, filters: {} };
+      return { cat: action.cat, filters: state.filters };
     case actionTypes.APPLY_FILTER :
       return { cat: state.cat, filters: Object.assign(state.filters, { [action.filter]: [action.filterValue] }) };
     case actionTypes.REMOVE_FILTER :
@@ -22,8 +22,9 @@ const appReducer = (state = { cat: '', filters: {} }, action) => {
   }
 };
 
+
 const reducer = combineReducers({
-  cats: appReducer,
+  app: appReducer,
 });
 
 export default createStore(reducer, {},
