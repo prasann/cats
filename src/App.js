@@ -15,11 +15,11 @@ class App extends Component {
             <Header />
           </div>
           <div className="content" >
-            <div className="viewer" >
-              <Viewer/>
-            </div>
             <div className="chooser" >
               <Chooser/>
+            </div>
+            <div className="viewer" >
+              <Viewer/>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ class Viewer extends Component {
         </svg>
       </div>;
     }
-    return null;
+    return <b>Select a cat!!!</b>;
   }
 }
 

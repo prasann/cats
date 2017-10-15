@@ -6,6 +6,7 @@ const Cat = (props) => {
                 src={`https://octodex.github.com/images/${props.name}.png`}
                 onClick={() => props.onClick(props.name)} />
 };
+
 const CatChooser = (props) => {
   return <div>
     <Cat name="jetpacktocat" onClick={props.onSelect} />
