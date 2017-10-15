@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
 import Header from './Header';
-import Viewer from './Viewer';
-import Chooser from './Chooser';
+import Viewer from './ViewerContainer';
+import Chooser from './ChooserContainer';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="container" >
-        <div className="header" >
-          <Header />
-        </div>
-        <div className="content" >
-          <div className="viewer" >
-            <Viewer/>
+      <Provider store={store} >
+        <div className="container" >
+          <div className="header" >
+            <Header />
           </div>
-          <div className="chooser" >
-            <Chooser/>
+          <div className="content" >
+            <div className="viewer" >
+              <Viewer/>
+            </div>
+            <div className="chooser" >
+              <Chooser/>
+            </div>
           </div>
         </div>
-      </div>
+      </Provider>
     );
   }
 }

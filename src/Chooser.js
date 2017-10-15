@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import './Chooser.css';
 
-const CatChooser = () => {
+const Cat = (props) => {
+  return <input type="image" alt={props.name}
+                src={`https://octodex.github.com/images/${props.name}.png`}
+                onClick={() => props.onClick(props.name)} />
+};
+const CatChooser = (props) => {
   return <div>
-    <input type="image" src="https://octodex.github.com/images/jetpacktocat.png" />
-    <input type="image" src="https://octodex.github.com/images/filmtocat.png" />
-    <input type="image" src="https://octodex.github.com/images/mountietocat.png" />
-    <input type="image" src="https://octodex.github.com/images/saritocat.png" />
-    <input type="image" src="https://octodex.github.com/images/steroidtocat.png" />
-    <input type="image" src="https://octodex.github.com/images/dunetocat.png" />
-    <input type="image" src="https://octodex.github.com/images/minertocat.png" />
-    <input type="image" src="https://octodex.github.com/images/catstello.png" />
-    <input type="image" src="https://octodex.github.com/images/saketocat.png" />
-    <input type="image" src="https://octodex.github.com/images/yaktocat.png" />
+    <Cat name="jetpacktocat" onClick={props.onSelect} />
+    <Cat name="filmtocat" onClick={props.onSelect} />
+    <Cat name="mountietocat" onClick={props.onSelect} />
+    <Cat name="saritocat" onClick={props.onSelect} />
+    <Cat name="steroidtocat" onClick={props.onSelect} />
+    <Cat name="dunetocat" onClick={props.onSelect} />
+    <Cat name="minertocat" onClick={props.onSelect} />
+    <Cat name="catstello" onClick={props.onSelect} />
+    <Cat name="saketocat" onClick={props.onSelect} />
+    <Cat name="yaktocat" onClick={props.onSelect} />
   </div>;
 };
 
@@ -20,27 +25,27 @@ const FilterChooser = () => {
   return <div>
     <h2>Filter Controls</h2>
 
-    <div className="filter-controls">
-    <div className="filter-control">
-      <label htmlFor="blur-filter" >Blur</label>
-      <input type="range" min="0" max="10"/>
-    </div>
-    <div className="filter-control">
-      <label htmlFor="morph-filter" >Morph</label>
-      <input type="range" min="0" max="10"/>
-    </div>
-    <div className="filter-control">
-      <label htmlFor="haze-filter" >Haze</label>
-      <input type="range" min="0" max="10"/>
-    </div>
+    <div className="filter-controls" >
+      <div className="filter-control" >
+        <label htmlFor="blur-filter" >Blur</label>
+        <input type="range" min="0" max="10" />
+      </div>
+      <div className="filter-control" >
+        <label htmlFor="morph-filter" >Morph</label>
+        <input type="range" min="0" max="10" />
+      </div>
+      <div className="filter-control" >
+        <label htmlFor="haze-filter" >Haze</label>
+        <input type="range" min="0" max="10" />
+      </div>
     </div>
   </div>;
 };
 
 class Chooser extends Component {
   render() {
-   return <div>
-      <CatChooser/>
+    return <div>
+      <CatChooser onSelect={this.props.selectCat} />
       <FilterChooser/>
     </div>;
   }
