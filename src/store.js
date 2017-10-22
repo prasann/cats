@@ -9,7 +9,7 @@ const omit = (object, blacklisted_keys) => Object.keys(object)
   .filter((key) => blacklisted_keys.indexOf(key) < 0)
   .reduce((newObj, key) => Object.assign(newObj, { [key]: object[key] }), {});
 
-const appReducer = (state = { cat: '', filters: { blur: 2 } }, action) => {
+const appReducer = (state = { cat: '', filters: { blur: 2, morphErode: 3 } }, action) => {
   switch (action.type) {
     case actionTypes.SELECT_CAT :
       return { cat: action.cat, filters: state.filters };

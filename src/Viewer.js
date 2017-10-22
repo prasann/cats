@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import definedFilters from './filters.json';
-import { Blur }  from './filters/Filters';
+import { Blur, MorphErode }  from './filters/Filters';
 
 const componentMapping = {
-  "blur": <Blur key="1" value={definedFilters.blur.default} />
+  "blur": <Blur key="1" value={definedFilters.blur.default} />,
+  "morphErode": <MorphErode key="2" value={definedFilters.morphErode.default} />
 };
 
 const filterComponents = (filterList) => {

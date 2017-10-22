@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Filter from './Filter';
+import definedFilters from './filters.json';
 
 const Cat = (props) => {
   return <input type="image" alt={props.name}
@@ -22,16 +23,25 @@ const CatChooser = (props) => {
   </div>;
 };
 
+const filters = () => {
+  const resultFilters = [];
+  Object.keys(definedFilters).forEach(function (key) {
+    const filterObj = definedFilters[key];
+    resultFilters.push(
+      <Filter
+        key={Math.random()}
+        label={filterObj.label}
+        min={filterObj.min} />);
+  });
+  return resultFilters;
+};
+
+
 const FilterChooser = () => {
   return <div>
     <h2>Filter Controls</h2>
     <div className="filter-controls" >
-      <Filter label="Blur" min="0" max="50" step="1" />
-      <Filter label="Morph-Erode" min="1" max="8" step="0.5" />
-      <Filter label="Morph-Dilate" min="1" max="50" step="1" />
-      <Filter label="Color-Saturate" min="0.1" max="4" step="0.1" />
-      <Filter label="Hue" min="1" max="360" step="10" />
-      <Filter label="Displacement" min="0" max="80" step="5" />
+      {filters()}
     </div>
   </div>;
 };
@@ -46,3 +56,12 @@ class Chooser extends Component {
 }
 
 export  default  Chooser;
+
+/*
+ <Filter label="Blur" min="0" max="50" step="1" />
+ <Filter label="Morph-Erode" min="1" max="8" step="0.5" />
+ <Filter label="Morph-Dilate" min="1" max="50" step="1" />
+ <Filter label="Color-Saturate" min="0.1" max="4" step="0.1" />
+ <Filter label="Hue" min="1" max="360" step="10" />
+ <Filter label="Displacement" min="0" max="80" step="5" />
+ */
