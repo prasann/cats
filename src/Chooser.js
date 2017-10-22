@@ -29,6 +29,7 @@ const filters = () => {
     const filterObj = definedFilters[key];
     resultFilters.push(
       <Filter
+        name={key}
         key={Math.random()}
         label={filterObj.label}
         min={filterObj.min} />);

@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
-import definedFilters from './filters.json';
 import { Blur, MorphErode }  from './filters/Filters';
 
 const componentMapping = {
-  "blur": <Blur key="1" value={definedFilters.blur.default} />,
-  "morphErode": <MorphErode key="2" value={definedFilters.morphErode.default} />
+  "blur": Blur,
+  "morphErode": MorphErode
+};
+
+const getComponent = (filterName, filterValue) => {
+  const FilterComponent = componentMapping[filterName];
+  return <FilterComponent key={Math.random()} value={filterValue} />
 };
 
 const filterComponents = (filterList) => {
   let filters = [];
   Object.keys(filterList).forEach(function (key) {
-    filters.push(componentMapping[key]);
+    filters.push(getComponent(key, filterList[key]));
   });
+
   return filters;
 };
 

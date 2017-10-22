@@ -9,12 +9,12 @@ const omit = (object, blacklisted_keys) => Object.keys(object)
   .filter((key) => blacklisted_keys.indexOf(key) < 0)
   .reduce((newObj, key) => Object.assign(newObj, { [key]: object[key] }), {});
 
-const appReducer = (state = { cat: '', filters: { blur: 2, morphErode: 3 } }, action) => {
+const appReducer = (state = { cat: '', filters: { blur: '2', morphErode: '3' } }, action) => {
   switch (action.type) {
     case actionTypes.SELECT_CAT :
       return { cat: action.cat, filters: state.filters };
     case actionTypes.APPLY_FILTER :
-      return { cat: state.cat, filters: Object.assign(state.filters, { [action.filter]: [action.filterValue] }) };
+      return { cat: state.cat, filters: Object.assign({}, { [action.filter]: action.filterValue }) };
     case actionTypes.REMOVE_FILTER :
       return { cat: state.cat, filters: omit(state.filters, [action.filter]) };
     default :
@@ -23,7 +23,7 @@ const appReducer = (state = { cat: '', filters: { blur: 2, morphErode: 3 } }, ac
 };
 
 
-const reducer = combineReducers({
+export const reducer = combineReducers({
   app: appReducer,
 });
 
