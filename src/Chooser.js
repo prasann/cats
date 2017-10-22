@@ -32,7 +32,9 @@ const filters = () => {
         name={key}
         key={Math.random()}
         label={filterObj.label}
-        min={filterObj.min} />);
+        min={filterObj.min}
+        max={filterObj.max}
+        step={filterObj.step} />);
   });
   return resultFilters;
 };

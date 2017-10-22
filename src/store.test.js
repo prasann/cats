@@ -26,10 +26,13 @@ describe('store', () => {
     expect(intermediateState.app.filters.blur).toBe('42');
     const newAction = {
       type: 'APPLY_FILTER',
-      filter: 'blur',
+      filter: 'morph',
       filterValue: '402',
     };
     deepFreeze(intermediateState);
-    expect(reducer(intermediateState, newAction).app.filters.blur).toBe('402');
+
+    const finalState = reducer(intermediateState, newAction);
+    expect(finalState.app.filters.blur).toBe('42');
+    expect(finalState.app.filters.morph).toBe('402');
   });
 });

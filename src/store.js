@@ -14,7 +14,11 @@ const appReducer = (state = { cat: '', filters: { blur: '2', morphErode: '3' } }
     case actionTypes.SELECT_CAT :
       return { cat: action.cat, filters: state.filters };
     case actionTypes.APPLY_FILTER :
-      return { cat: state.cat, filters: Object.assign({}, { [action.filter]: action.filterValue }) };
+      return {
+        cat: state.cat, filters: Object.assign({},
+          state.filters,
+          { [action.filter]: action.filterValue })
+      };
     case actionTypes.REMOVE_FILTER :
       return { cat: state.cat, filters: omit(state.filters, [action.filter]) };
     default :
