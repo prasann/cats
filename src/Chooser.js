@@ -34,6 +34,7 @@ const filters = () => {
         label={filterObj.label}
         min={filterObj.min}
         max={filterObj.max}
+        value={filterObj.default}
         step={filterObj.step} />);
   });
   return resultFilters;
@@ -61,8 +62,6 @@ class Chooser extends Component {
 export  default  Chooser;
 
 /*
- <Filter label="Blur" min="0" max="50" step="1" />
- <Filter label="Morph-Erode" min="1" max="8" step="0.5" />
  <Filter label="Morph-Dilate" min="1" max="50" step="1" />
  <Filter label="Color-Saturate" min="0.1" max="4" step="0.1" />
  <Filter label="Hue" min="1" max="360" step="10" />

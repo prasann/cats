@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { Blur, MorphErode }  from './filters/Filters';
+import { Blur, MorphErode, MorphDilate, Hue, ColorSaturate }  from './filters/Filters';
 
 const componentMapping = {
   "blur": Blur,
-  "morphErode": MorphErode
+  "morphErode": MorphErode,
+  "morphDilate": MorphDilate,
+  "colorSaturate": ColorSaturate,
+  "hue": Hue,
 };
 
 const getComponent = (filterName, filterValue) => {
@@ -31,7 +34,7 @@ class Viewer extends Component {
           <image
             width="100%" height="100%"
             xlinkHref={`https://octodex.github.com/images/${this.props.cat}.png`}
-            filter={this.props.filters !== {} ?
+            filter={Object.keys(this.props.filters).length !== 0 ?
               "url(#filtersPicture)" : ""}
           />
         </svg>
