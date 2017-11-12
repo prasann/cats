@@ -1,0 +1,2 @@
+body{margin:0;padding:0;font-family:sans-serif}.container{text-align:center}.header{height:50px;background:#000;border-bottom:1px solid #222;color:#fff;font-size:150%;font-weight:700}.content{display:grid;grid-template-columns:50% 50%}.content .viewer{height:825px;border-left:1px solid #222}.content .chooser{margin-top:10px;height:750px}input[type=image]{margin:5px;border:2px solid #333;border-radius:4px;padding:10px;height:100px;width:100px}
+/*# sourceMappingURL=main.e5f450bb.css.map*/
