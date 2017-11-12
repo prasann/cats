@@ -4,7 +4,7 @@ import Cats from './Cats';
 import Filters from './Filters';
 
 const mapDispatchers = dispatch => ({
-  selectCat: (cat) => {
+  selectCat: cat => {
     dispatch({
       type: 'SELECT_CAT',
       cat
@@ -15,16 +15,18 @@ const mapDispatchers = dispatch => ({
     dispatch({
       type: 'APPLY_FILTER',
       filter: filterName,
-      filterValue: filterValue,
+      filterValue: filterValue
     });
   }
 });
 
-const Chooser = (props) => {
-  return <div >
-    <Cats onSelect={props.selectCat} />
-    <Filters onChange={props.applyFilter} />
-  </div >;
+const Chooser = props => {
+  return (
+    <div>
+      <Cats onSelect={props.selectCat} />
+      <Filters onChange={props.applyFilter} />
+    </div>
+  );
 };
 
 const mapStateToProps = () => ({});

@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
-import { Blur, MorphErode, MorphDilate, Hue, ColorSaturate }  from './filters/Filters';
+import {
+  Blur,
+  MorphErode,
+  MorphDilate,
+  Hue,
+  ColorSaturate
+} from './filters/Filters';
 
 const componentMapping = {
-  "blur": Blur,
-  "morphErode": MorphErode,
-  "morphDilate": MorphDilate,
-  "colorSaturate": ColorSaturate,
-  "hue": Hue,
+  blur: Blur,
+  morphErode: MorphErode,
+  morphDilate: MorphDilate,
+  colorSaturate: ColorSaturate,
+  hue: Hue
 };
 
 const getComponent = (filterName, filterValue) => {
   const FilterComponent = componentMapping[filterName];
-  return <FilterComponent key={Math.random()} value={filterValue} />
+  return <FilterComponent key={Math.random()} value={filterValue} />;
 };
 
-const filterComponents = (filterList) => {
+const filterComponents = filterList => {
   let filters = [];
-  Object.keys(filterList).forEach(function (key) {
+  Object.keys(filterList).forEach(function(key) {
     filters.push(getComponent(key, filterList[key]));
   });
 
@@ -26,22 +32,30 @@ const filterComponents = (filterList) => {
 class Viewer extends Component {
   render() {
     if (this.props.cat) {
-      return <div>
-        <svg width="660" height="500" >
-          <filter id="filtersPicture" >
-            {filterComponents(this.props.filters)}
-          </filter>
-          <image
-            width="100%" height="100%"
-            xlinkHref={`https://octodex.github.com/images/${this.props.cat}.png`}
-            filter={Object.keys(this.props.filters).length !== 0 ?
-              "url(#filtersPicture)" : ""}
-          />
-        </svg>
-      </div>;
+      return (
+        <div>
+          <svg width="660" height="500">
+            <filter id="filtersPicture">
+              {filterComponents(this.props.filters)}
+            </filter>
+            <image
+              width="100%"
+              height="100%"
+              xlinkHref={`https://octodex.github.com/images/${
+                this.props.cat
+              }.png`}
+              filter={
+                Object.keys(this.props.filters).length !== 0
+                  ? 'url(#filtersPicture)'
+                  : ''
+              }
+            />
+          </svg>
+        </div>
+      );
     }
     return <b>Select a cat!!!</b>;
   }
 }
 
-export  default  Viewer;
+export default Viewer;

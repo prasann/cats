@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
-import definedFilters from '../filters.json';
+import definedFilters from './filters.json';
 
 const styles = {
   filterControl: {
-    margin: "20px 0",
-    padding: "20px 0",
-    borderBottom: "1px solid #222222",
+    margin: '20px 0',
+    padding: '20px 0',
+    borderBottom: '1px solid #222222',
 
     label: {
-      fontWeight: "bold",
-      display: "inline-block",
-      width: "150px",
+      fontWeight: 'bold',
+      display: 'inline-block',
+      width: '150px'
     },
 
     input: {
-      textAlign: "right",
-    },
+      textAlign: 'right'
+    }
   },
 
   filterControls: {
-    textAlign: "left",
-    marginLeft: "20px",
+    textAlign: 'left',
+    marginLeft: '20px'
   }
 };
-
 
 class Filter extends Component {
   constructor(props) {
@@ -35,24 +34,32 @@ class Filter extends Component {
   slideChanger(event) {
     this.setState({ value: event.target.value });
     this.props.applyFilter(this.props.name, event.target.value);
-  };
+  }
 
   render() {
-    return <div style={styles.filterControl} >
-      <label style={styles.filterControl.label} >{this.props.label}</label >
-      <input type="range" min={this.props.min}
-             style={styles.filterControl.input}
-             max={this.props.max}
-             step={this.props.step}
-             value={this.state.value}
-             onChange={this.slideChanger} />
-    </div >
+    return (
+      <div style={styles.filterControl}>
+        <label htmlFor={this.props.name} style={styles.filterControl.label}>
+          {this.props.label}
+        </label>
+        <input
+          id={this.props.name}
+          type="range"
+          min={this.props.min}
+          style={styles.filterControl.input}
+          max={this.props.max}
+          step={this.props.step}
+          value={this.state.value}
+          onChange={this.slideChanger}
+        />
+      </div>
+    );
   }
 }
 
-const buildFilters = (applyFilterFn) => {
+const buildFilters = applyFilterFn => {
   const resultFilters = [];
-  Object.keys(definedFilters).forEach(function (key) {
+  Object.keys(definedFilters).forEach(function(key) {
     const filterObj = definedFilters[key];
     resultFilters.push(
       <Filter
@@ -63,18 +70,20 @@ const buildFilters = (applyFilterFn) => {
         max={filterObj.max}
         value={filterObj.default}
         step={filterObj.step}
-        applyFilter={applyFilterFn} />);
+        applyFilter={applyFilterFn}
+      />
+    );
   });
   return resultFilters;
 };
 
-const Filters = (props) => {
-  return <div >
-    <h2 >Filter Controls</h2 >
-    <div style={styles.filterControls} >
-      {buildFilters(props.onChange)}
-    </div >
-  </div >;
+const Filters = props => {
+  return (
+    <div>
+      <h2>Filter Controls</h2>
+      <div style={styles.filterControls}>{buildFilters(props.onChange)}</div>
+    </div>
+  );
 };
 
 export default Filters;

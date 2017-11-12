@@ -6,18 +6,20 @@ describe('store', () => {
     const oldState = {};
     const action = {
       type: 'SELECT_CAT',
-      cat: 'Cat',
+      cat: 'Cat'
     };
     deepFreeze(oldState);
     expect(reducer(oldState, action).app.cat).toBe('Cat');
   });
 
   it('should react to apply_filter event', () => {
-    const oldState = { app: { cat: 'asds', filters: { blur: '2', morphErode: '3' } } };
+    const oldState = {
+      app: { cat: 'asds', filters: { blur: '2', morphErode: '3' } }
+    };
     const action = {
       type: 'APPLY_FILTER',
       filter: 'blur',
-      filterValue: '42',
+      filterValue: '42'
     };
 
     deepFreeze(oldState);
@@ -27,7 +29,7 @@ describe('store', () => {
     const newAction = {
       type: 'APPLY_FILTER',
       filter: 'morph',
-      filterValue: '402',
+      filterValue: '402'
     };
     deepFreeze(intermediateState);
 
