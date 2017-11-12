@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import {
   Blur,
   MorphErode,
   MorphDilate,
   Hue,
   ColorSaturate
-} from './filters/Filters';
+} from "./AppliedFilters";
 
 const componentMapping = {
   blur: Blur,
@@ -46,8 +48,8 @@ class Viewer extends Component {
               }.png`}
               filter={
                 Object.keys(this.props.filters).length !== 0
-                  ? 'url(#filtersPicture)'
-                  : ''
+                  ? "url(#filtersPicture)"
+                  : ""
               }
             />
           </svg>
@@ -58,4 +60,11 @@ class Viewer extends Component {
   }
 }
 
-export default Viewer;
+const mapDispatchers = dispatch => ({});
+
+const mapStateToProps = state => ({
+  cat: state.app.cat,
+  filters: state.app.filters
+});
+
+export default connect(mapStateToProps, mapDispatchers)(Viewer);

@@ -1,19 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Cats from './Cats';
-import Filters from './Filters';
+import React from "react";
+import { connect } from "react-redux";
+import Cats from "./Cats";
+import Filters from "./Filters";
 
 const mapDispatchers = dispatch => ({
   selectCat: cat => {
     dispatch({
-      type: 'SELECT_CAT',
+      type: "SELECT_CAT",
       cat
     });
   },
 
   applyFilter: (filterName, filterValue) => {
     dispatch({
-      type: 'APPLY_FILTER',
+      type: "APPLY_FILTER",
       filter: filterName,
       filterValue: filterValue
     });

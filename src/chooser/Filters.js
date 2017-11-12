@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
-import definedFilters from './filters.json';
+import React, { Component } from "react";
+import definedFilters from "./filters.json";
 
 const styles = {
   filterControl: {
-    margin: '20px 0',
-    padding: '20px 0',
-    borderBottom: '1px solid #222222',
+    margin: "20px 0",
+    padding: "20px 0",
+    borderBottom: "1px solid #222222",
 
     label: {
-      fontWeight: 'bold',
-      display: 'inline-block',
-      width: '150px'
+      fontWeight: "bold",
+      display: "inline-block",
+      width: "150px"
     },
 
     input: {
-      textAlign: 'right'
+      textAlign: "right"
     }
   },
 
   filterControls: {
-    textAlign: 'left',
-    marginLeft: '20px'
+    textAlign: "left",
+    marginLeft: "20px"
   }
 };
 

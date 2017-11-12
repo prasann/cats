@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import store from './store';
-import Header from './Header';
-import Viewer from './viewer/ViewerContainer';
-import Chooser from './chooser/Container';
-import './App.css';
+import React, { Component } from "react";
+import { Provider } from "react-redux";
+import store from "./store";
+import Header from "./Header";
+import Viewer from "./viewer/Container";
+import Chooser from "./chooser/Container";
+import "./App.css";
 
 class App extends Component {
   render() {

@@ -1,16 +1,16 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers } from "redux";
 
 const actionTypes = {
-  SELECT_CAT: 'SELECT_CAT',
-  APPLY_FILTER: 'APPLY_FILTER',
-  REMOVE_FILTER: 'REMOVE_FILTER'
+  SELECT_CAT: "SELECT_CAT",
+  APPLY_FILTER: "APPLY_FILTER",
+  REMOVE_FILTER: "REMOVE_FILTER"
 };
 const omit = (object, blacklisted_keys) =>
   Object.keys(object)
     .filter(key => blacklisted_keys.indexOf(key) < 0)
     .reduce((newObj, key) => Object.assign(newObj, { [key]: object[key] }), {});
 
-const appReducer = (state = { cat: '', filters: {} }, action) => {
+const appReducer = (state = { cat: "", filters: {} }, action) => {
   switch (action.type) {
     case actionTypes.SELECT_CAT:
       return { cat: action.cat, filters: state.filters };

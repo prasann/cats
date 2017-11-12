@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 
 const availableCats = [
-  'jetpacktocat',
-  'filmtocat',
-  'mountietocat',
-  'saritocat',
-  'steroidtocat',
-  'dunetocat',
-  'minertocat',
-  'catstello',
-  'saketocat',
-  'yaktocat'
+  "jetpacktocat",
+  "filmtocat",
+  "mountietocat",
+  "saritocat",
+  "steroidtocat",
+  "dunetocat",
+  "minertocat",
+  "catstello",
+  "saketocat",
+  "yaktocat"
 ];
 
 const Cat = props => {
