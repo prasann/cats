@@ -1,7 +1,7 @@
 {
-  "name": "p2p-filters",
+  "name": "cats",
   "version": "0.1.0",
-  "homepage": "/cards",
+  "homepage": "/cats",
   "private": true,
   "dependencies": {
     "react": "^16.0.0",
