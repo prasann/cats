@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import Filter from './Filter';
 import definedFilters from './filters.json';
 
+const availableCats = [
+  "jetpacktocat",
+  "filmtocat",
+  "mountietocat",
+  "saritocat",
+  "steroidtocat",
+  "dunetocat",
+  "minertocat",
+  "catstello",
+  "saketocat",
+  "yaktocat"
+];
+
 const Cat = (props) => {
   return <input type="image" alt={props.name}
                 src={`https://octodex.github.com/images/${props.name}.png`}
@@ -9,18 +22,11 @@ const Cat = (props) => {
 };
 
 const CatChooser = (props) => {
-  return <div>
-    <Cat name="jetpacktocat" onClick={props.onSelect} />
-    <Cat name="filmtocat" onClick={props.onSelect} />
-    <Cat name="mountietocat" onClick={props.onSelect} />
-    <Cat name="saritocat" onClick={props.onSelect} />
-    <Cat name="steroidtocat" onClick={props.onSelect} />
-    <Cat name="dunetocat" onClick={props.onSelect} />
-    <Cat name="minertocat" onClick={props.onSelect} />
-    <Cat name="catstello" onClick={props.onSelect} />
-    <Cat name="saketocat" onClick={props.onSelect} />
-    <Cat name="yaktocat" onClick={props.onSelect} />
-  </div>;
+  return <div >
+    {availableCats.map((catName) => {
+      return <Cat key={Math.random()} name={catName} onClick={props.onSelect} />;
+    })}
+  </div >;
 };
 
 const filters = () => {
@@ -42,28 +48,21 @@ const filters = () => {
 
 
 const FilterChooser = () => {
-  return <div>
-    <h2>Filter Controls</h2>
+  return <div >
+    <h2 >Filter Controls</h2 >
     <div className="filter-controls" >
       {filters()}
-    </div>
-  </div>;
+    </div >
+  </div >;
 };
 
 class Chooser extends Component {
   render() {
-    return <div>
+    return <div >
       <CatChooser onSelect={this.props.selectCat} />
-      <FilterChooser/>
-    </div>;
+      <FilterChooser />
+    </div >;
   }
 }
 
-export  default  Chooser;
-
-/*
- <Filter label="Morph-Dilate" min="1" max="50" step="1" />
- <Filter label="Color-Saturate" min="0.1" max="4" step="0.1" />
- <Filter label="Hue" min="1" max="360" step="10" />
- <Filter label="Displacement" min="0" max="80" step="5" />
- */
+export default Chooser;

@@ -13,17 +13,17 @@ class App extends Component {
         <div className="container" >
           <div className="header" >
             <Header />
-          </div>
+          </div >
           <div className="content" >
             <div className="chooser" >
-              <Chooser/>
-            </div>
+              <Chooser />
+            </div >
             <div className="viewer" >
-              <Viewer/>
-            </div>
-          </div>
-        </div>
-      </Provider>
+              <Viewer />
+            </div >
+          </div >
+        </div >
+      </Provider >
     );
   }
 }
