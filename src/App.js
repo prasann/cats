@@ -1,29 +1,25 @@
 import React, { Component } from "react";
-import { Provider } from "react-redux";
-import store from "./store";
-import Header from "./Header";
-import Viewer from "./viewer/Container";
-import Chooser from "./chooser/Container";
+import Standalone from './Standalone';
+import Chooser from './chooser/Component';
+import Viewer from './viewer/Component';
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
+
 import "./App.css";
+
 
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <div className="container">
-          <div className="header">
-            <Header />
-          </div>
-          <div className="content">
-            <div className="chooser">
-              <Chooser />
-            </div>
-            <div className="viewer">
-              <Viewer />
-            </div>
-          </div>
-        </div>
-      </Provider>
+      <Router >
+        <div >
+          <Route exact path="/" component={Standalone} />
+          <Route exact path="/chooser" component={Chooser} />
+          <Route exact path="/viewer" component={Viewer} />
+        </div >
+      </Router >
     );
   }
 }
