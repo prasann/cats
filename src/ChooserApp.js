@@ -1,19 +1,74 @@
 import React, { Component } from "react";
 import Chooser from './chooser/Component';
-import ChooserConnector from './ChooserConnector';
+import Peer from 'peerjs';
 
 class ChooserApp extends Component {
   constructor() {
     super();
-    this.state = { viewer: '' }
+    this.state = {
+      peer: new Peer('jeeboomba001', {
+        key: '3lj66054uazl4n29'
+      }),
+      peerIp: '',
+      conn: undefined,
+      connected: false,
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.connectToPeer = this.connectToPeer.bind(this);
+    this.openConnection = this.openConnection.bind(this);
+    this.selectCat = this.selectCat.bind(this);
+    this.connectorDom = this.connectorDom.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ peerIp: event.target.value });
+  }
+
+  openConnection() {
+    this.state.conn.on('open', () => {
+      this.setState({
+        connected: true
+      });
+    });
+
+    this.state.conn.on('data', this.onReceiveData);
+  }
+
+  connectToPeer(event) {
+    const connection = this.state.peer.connect('jeeboomba002');
+    if (connection) {
+      this.setState({
+        conn: connection
+      }, this.openConnection);
+    } else {
+      console.error('Connection unsuccessful :(')
+    }
+    event.preventDefault();
+  }
+
+  selectCat(cat) {
+    this.state.conn.send({
+      cat: cat,
+    });
+  }
+
+  connectorDom() {
+    if (this.state.connected) {
+      return <div >Connected to {this.state.conn.peer}</div >
+    } else {
+      return <div >
+        <h1 >Connect to a monitor</h1 >
+        <input type="text" value={this.state.peerIp} onChange={this.handleChange} />
+        <input type="button" value="Connect" onClick={this.connectToPeer} />
+      </div >;
+    }
   }
 
   render() {
-    if (this.state.viewer === '') {
-      return <ChooserConnector />
-    } else {
-      return <Chooser />
-    }
+    return <div >
+      {this.connectorDom()}
+      <Chooser selectCat={this.selectCat} />
+    </div >;
   }
 }
 
