@@ -6,21 +6,21 @@ import Viewer from "./viewer/Container";
 import Chooser from "./chooser/Container";
 
 const Standalone = () => (
-  <Provider store={store} >
-    <div className="container" >
-      <div className="header" >
+  <Provider store={store}>
+    <div className="container">
+      <div className="header">
         <Header />
-      </div >
-      <div className="content" >
-        <div className="chooser" >
+      </div>
+      <div className="content">
+        <div className="chooser">
           <Chooser />
-        </div >
-        <div className="viewer" >
+        </div>
+        <div className="viewer">
           <Viewer />
-        </div >
-      </div >
-    </div >
-  </Provider >
+        </div>
+      </div>
+    </div>
+  </Provider>
 );
 
 export default Standalone;

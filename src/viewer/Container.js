@@ -1,4 +1,4 @@
-import Viewer from './Component';
+import Viewer from "./Component";
 import { connect } from "react-redux";
 
 const mapDispatchers = dispatch => ({});

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import Peer from 'peerjs';
-import Viewer from './viewer/Component';
+import Peer from "peerjs";
+import Viewer from "./viewer/Component";
 
 class ViewerApp extends Component {
   constructor() {
     super();
     this.state = {
-      peer: new Peer('jeeboomba002', {
-        key: '3lj66054uazl4n29'
+      peer: new Peer("jeeboomba002", {
+        key: "3lj66054uazl4n29"
       }),
       data: {}
     };
@@ -21,20 +21,23 @@ class ViewerApp extends Component {
   }
 
   openConnection() {
-    this.state.conn.on('open', () => {
+    this.state.conn.on("open", () => {
       this.setState({
         connected: true
       });
     });
 
-    this.state.conn.on('data', this.onReceiveData);
-  };
+    this.state.conn.on("data", this.onReceiveData);
+  }
 
   initPeer() {
-    this.state.peer.on('connection', (connection) => {
-      this.setState({
-        conn: connection
-      }, this.openConnection);
+    this.state.peer.on("connection", connection => {
+      this.setState(
+        {
+          conn: connection
+        },
+        this.openConnection
+      );
     });
   }
 
@@ -44,16 +47,20 @@ class ViewerApp extends Component {
 
   connectorDOM() {
     if (this.state.connected) {
-      return <div >{this.state.conn.peer} is connected</div >
+      return <div>{this.state.conn.peer} is connected</div>;
     }
   }
 
   render() {
-    return <div >
-      {this.connectorDOM()}
-      <Viewer cat={this.state.data.cat}
-              filters={this.state.data.filters || {}} />
-    </div >;
+    return (
+      <div>
+        {this.connectorDOM()}
+        <Viewer
+          cat={this.state.data.cat}
+          filters={this.state.data.filters || {}}
+        />
+      </div>
+    );
   }
 }
 

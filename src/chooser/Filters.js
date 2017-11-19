@@ -10,11 +10,11 @@ const styles = {
       fontWeight: "bold",
       display: "inline-block",
       width: "150px",
-      marginBottom: "15px",
+      marginBottom: "15px"
     },
 
     sliderContainer: {
-      width: "50%",
+      width: "50%"
     },
 
     input: {
@@ -42,10 +42,10 @@ class Filter extends Component {
 
   render() {
     return (
-      <div style={styles.filterControl} >
-        <label htmlFor={this.props.name} style={styles.filterControl.label} >
+      <div style={styles.filterControl}>
+        <label htmlFor={this.props.name} style={styles.filterControl.label}>
           {this.props.label}
-        </label >
+        </label>
         <input
           id={this.props.name}
           type="range"
@@ -56,14 +56,14 @@ class Filter extends Component {
           value={this.state.value}
           onChange={this.slideChanger}
         />
-      </div >
+      </div>
     );
   }
 }
 
 const buildFilters = applyFilterFn => {
   const resultFilters = [];
-  Object.keys(definedFilters).forEach(function (key) {
+  Object.keys(definedFilters).forEach(function(key) {
     const filterObj = definedFilters[key];
     resultFilters.push(
       <Filter
@@ -83,10 +83,10 @@ const buildFilters = applyFilterFn => {
 
 const Filters = props => {
   return (
-    <div >
-      <h2 >Filter Controls</h2 >
-      <div style={styles.filterControls} >{buildFilters(props.onChange)}</div >
-    </div >
+    <div>
+      <h2>Filter Controls</h2>
+      <div style={styles.filterControls}>{buildFilters(props.onChange)}</div>
+    </div>
   );
 };
 

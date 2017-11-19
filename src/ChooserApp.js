@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import Chooser from './chooser/Component';
-import Peer from 'peerjs';
+import Chooser from "./chooser/Component";
+import Peer from "peerjs";
 
 class ChooserApp extends Component {
   constructor() {
     super();
     this.state = {
-      peer: new Peer('jeeboomba001', {
-        key: '3lj66054uazl4n29'
+      peer: new Peer("jeeboomba001", {
+        key: "3lj66054uazl4n29"
       }),
-      peerIp: '',
+      peerIp: "",
       data: {},
       conn: undefined,
-      connected: false,
+      connected: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.connectToPeer = this.connectToPeer.bind(this);
@@ -27,42 +27,48 @@ class ChooserApp extends Component {
   }
 
   openConnection() {
-    this.state.conn.on('open', () => {
+    this.state.conn.on("open", () => {
       this.setState({
         connected: true
       });
     });
 
-    this.state.conn.on('data', this.onReceiveData);
+    this.state.conn.on("data", this.onReceiveData);
   }
 
   connectToPeer(event) {
-    const connection = this.state.peer.connect('jeeboomba002');
+    const connection = this.state.peer.connect("jeeboomba002");
     if (connection) {
-      this.setState({
-        conn: connection
-      }, this.openConnection);
+      this.setState(
+        {
+          conn: connection
+        },
+        this.openConnection
+      );
     } else {
-      console.error('Connection unsuccessful :(')
+      console.error("Connection unsuccessful :(");
     }
     event.preventDefault();
   }
 
   selectCat(cat) {
-    this.setState({ data: { cat: cat, filters: {} } },
-      () => this.state.conn.send(this.state.data));
+    this.setState({ data: { cat: cat, filters: {} } }, () =>
+      this.state.conn.send(this.state.data)
+    );
   }
 
   applyFilter(filterName, filterValue) {
-    this.setState({
-      data: {
-        cat: this.state.data.cat,
-        filters: Object.assign({},
-          this.state.data.filters, {
+    this.setState(
+      {
+        data: {
+          cat: this.state.data.cat,
+          filters: Object.assign({}, this.state.data.filters, {
             [filterName]: filterValue
           })
-      }
-    }, () => this.state.conn.send(this.state.data));
+        }
+      },
+      () => this.state.conn.send(this.state.data)
+    );
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -71,21 +77,29 @@ class ChooserApp extends Component {
 
   connectorDom() {
     if (this.state.connected) {
-      return <div >Connected to {this.state.conn.peer}</div >
+      return <div>Connected to {this.state.conn.peer}</div>;
     } else {
-      return <div >
-        <h1 >Connect to a monitor</h1 >
-        <input type="text" value={this.state.peerIp} onChange={this.handleChange} />
-        <input type="button" value="Connect" onClick={this.connectToPeer} />
-      </div >;
+      return (
+        <div>
+          <h1>Connect to a monitor</h1>
+          <input
+            type="text"
+            value={this.state.peerIp}
+            onChange={this.handleChange}
+          />
+          <input type="button" value="Connect" onClick={this.connectToPeer} />
+        </div>
+      );
     }
   }
 
   render() {
-    return <div >
-      {this.connectorDom()}
-      <Chooser selectCat={this.selectCat} applyFilter={this.applyFilter} />
-    </div >;
+    return (
+      <div>
+        {this.connectorDom()}
+        <Chooser selectCat={this.selectCat} applyFilter={this.applyFilter} />
+      </div>
+    );
   }
 }
 

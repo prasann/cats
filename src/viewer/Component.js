@@ -44,7 +44,7 @@ class Viewer extends Component {
               height="100%"
               xlinkHref={`https://octodex.github.com/images/${
                 this.props.cat
-                }.png`}
+              }.png`}
               filter={
                 Object.keys(this.props.filters).length !== 0
                   ? "url(#filtersPicture)"
