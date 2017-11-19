@@ -51,7 +51,8 @@ class ViewerApp extends Component {
   render() {
     return <div >
       {this.connectorDOM()}
-      <Viewer cat={this.state.data.cat} filters={{}} />
+      <Viewer cat={this.state.data.cat}
+              filters={this.state.data.filters || {}} />
     </div >;
   }
 }

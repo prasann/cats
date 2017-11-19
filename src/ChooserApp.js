@@ -10,6 +10,7 @@ class ChooserApp extends Component {
         key: '3lj66054uazl4n29'
       }),
       peerIp: '',
+      data: {},
       conn: undefined,
       connected: false,
     };
@@ -18,6 +19,7 @@ class ChooserApp extends Component {
     this.openConnection = this.openConnection.bind(this);
     this.selectCat = this.selectCat.bind(this);
     this.connectorDom = this.connectorDom.bind(this);
+    this.applyFilter = this.applyFilter.bind(this);
   }
 
   handleChange(event) {
@@ -47,9 +49,24 @@ class ChooserApp extends Component {
   }
 
   selectCat(cat) {
-    this.state.conn.send({
-      cat: cat,
-    });
+    this.setState({ data: { cat: cat, filters: {} } },
+      () => this.state.conn.send(this.state.data));
+  }
+
+  applyFilter(filterName, filterValue) {
+    this.setState({
+      data: {
+        cat: this.state.data.cat,
+        filters: Object.assign({},
+          this.state.data.filters, {
+            [filterName]: filterValue
+          })
+      }
+    }, () => this.state.conn.send(this.state.data));
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.data === nextState.data;
   }
 
   connectorDom() {
@@ -67,7 +84,7 @@ class ChooserApp extends Component {
   render() {
     return <div >
       {this.connectorDom()}
-      <Chooser selectCat={this.selectCat} />
+      <Chooser selectCat={this.selectCat} applyFilter={this.applyFilter} />
     </div >;
   }
 }
