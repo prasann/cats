@@ -1,6 +1,19 @@
 import React, { Component } from "react";
 import Chooser from "./chooser/Component";
 import Peer from "peerjs";
+import Input from 'material-ui/Input';
+import Button from 'material-ui/Button';
+import { SnackbarContent } from 'material-ui/Snackbar';
+
+const styles = {
+  container: {
+    display: "grid",
+    justifyItems: "center",
+  },
+  peerIpInput: {
+    marginRight: '20px',
+  },
+};
 
 class ChooserApp extends Component {
   constructor() {
@@ -81,28 +94,33 @@ class ChooserApp extends Component {
 
   connectorDom() {
     if (this.state.connected) {
-      return <div>Connected to {this.state.conn.peer}</div>;
+      return <SnackbarContent
+        message={`Connected to ${this.state.conn.peer}`} />
     } else {
       return (
-        <div>
-          <h1>Connect to a monitor</h1>
-          <input
+        <div style={styles.connectedSuccess} >
+          <h1 >Connect to a monitor</h1 >
+          <Input
             type="text"
+            placeholder="Monitor Name"
+            style={styles.peerIpInput}
             value={this.state.peerIp}
             onChange={this.handleChange}
           />
-          <input type="button" value="Connect" onClick={this.connectToPeer} />
-        </div>
+          <Button raised color='primary' onClick={this.connectToPeer} >Connect</Button >
+        </div >
       );
     }
   }
 
   render() {
     return (
-      <div>
+      <div style={styles.container} >
         {this.connectorDom()}
-        <Chooser selectCat={this.selectCat} applyFilter={this.applyFilter} />
-      </div>
+        {this.state.connected ?
+          <Chooser selectCat={this.selectCat} applyFilter={this.applyFilter} />
+          : <div />}
+      </div >
     );
   }
 }

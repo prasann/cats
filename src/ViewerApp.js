@@ -1,6 +1,18 @@
 import React, { Component } from "react";
 import Peer from "peerjs";
 import Viewer from "./viewer/Component";
+import { SnackbarContent } from 'material-ui/Snackbar';
+
+const styles = {
+  container: {
+    display: "grid",
+    justifyItems: "center",
+  },
+  viewerContainer: {
+    marginTop: '50px',
+  }
+};
+
 
 class ViewerApp extends Component {
   constructor() {
@@ -51,19 +63,28 @@ class ViewerApp extends Component {
 
   connectorDOM() {
     if (this.state.connected) {
-      return <div>{this.state.conn.peer} is connected</div>;
+      return <SnackbarContent
+        message={`Connected to ${this.state.conn.peer}`} />
+    } else {
+      return <div >
+        <h1 >Monitor Name</h1 >
+      </div >
     }
   }
 
   render() {
     return (
-      <div>
+      <div style={styles.container} >
         {this.connectorDOM()}
-        <Viewer
-          cat={this.state.data.cat}
-          filters={this.state.data.filters || {}}
-        />
-      </div>
+        {this.state.connected ?
+          <div style={styles.viewerContainer} >
+            <Viewer
+              cat={this.state.data.cat}
+              filters={this.state.data.filters || {}} />
+          </div >
+          : <div />}
+
+      </div >
     );
   }
 }

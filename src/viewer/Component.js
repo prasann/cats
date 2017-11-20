@@ -23,39 +23,52 @@ const getComponent = (filterName, filterValue) => {
 
 const filterComponents = filterList => {
   let filters = [];
-  Object.keys(filterList).forEach(function(key) {
+  Object.keys(filterList).forEach(function (key) {
     filters.push(getComponent(key, filterList[key]));
   });
 
   return filters;
 };
 
+const styles = {
+  default: {
+    svgWidth: "660",
+    svgHeight: "500",
+  }
+};
+
 class Viewer extends Component {
+  constructor() {
+    super();
+    this.currentStyles = styles.default;
+  }
+
   render() {
     if (this.props.cat) {
       return (
-        <div>
-          <svg width="660" height="500">
-            <filter id="filtersPicture">
+        <div >
+          <svg width={this.currentStyles.svgWidth}
+               height={this.currentStyles.svgHeight} >
+            <filter id="filtersPicture" >
               {filterComponents(this.props.filters)}
-            </filter>
+            </filter >
             <image
               width="100%"
               height="100%"
               xlinkHref={`https://octodex.github.com/images/${
                 this.props.cat
-              }.png`}
+                }.png`}
               filter={
                 Object.keys(this.props.filters).length !== 0
                   ? "url(#filtersPicture)"
                   : ""
               }
             />
-          </svg>
-        </div>
+          </svg >
+        </div >
       );
     }
-    return <b>Select a cat!!!</b>;
+    return <h1 >Select a cat!!!</h1 >;
   }
 }
 
