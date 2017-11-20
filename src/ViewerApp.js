@@ -6,9 +6,8 @@ class ViewerApp extends Component {
   constructor() {
     super();
     this.state = {
-      peer: new Peer("jeeboomba002", {
-        key: "3lj66054uazl4n29"
-      }),
+      peer: new Peer("jeeboomba002",
+        { host: 'peercats.herokuapp.com', secure: true, port: 443, key: 'peerjs', debug: 3 }),
       data: {}
     };
     this.initPeer = this.initPeer.bind(this);
@@ -47,19 +46,19 @@ class ViewerApp extends Component {
 
   connectorDOM() {
     if (this.state.connected) {
-      return <div>{this.state.conn.peer} is connected</div>;
+      return <div >{this.state.conn.peer} is connected</div >;
     }
   }
 
   render() {
     return (
-      <div>
+      <div >
         {this.connectorDOM()}
         <Viewer
           cat={this.state.data.cat}
           filters={this.state.data.filters || {}}
         />
-      </div>
+      </div >
     );
   }
 }
