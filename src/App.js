@@ -12,8 +12,8 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={Standalone} />
-          <Route exact path="/chooser" component={ChooserApp} />
-          <Route exact path="/viewer" component={ViewerApp} />
+          <Route exact path="/cats/chooser" component={ChooserApp} />
+          <Route exact path="/cats/viewer" component={ViewerApp} />
         </div>
       </Router>
     );
