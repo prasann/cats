@@ -6,8 +6,13 @@ class ChooserApp extends Component {
   constructor() {
     super();
     this.state = {
-      peer: new Peer("jeeboomba001",
-        { host: 'peercats.herokuapp.com', secure: true, port: 443, key: 'peerjs', debug: 3 }),
+      peer: new Peer("jeeboomba001", {
+        host: "peercats.herokuapp.com",
+        secure: true,
+        port: 443,
+        key: "peerjs",
+        debug: 3
+      }),
       peerIp: "",
       data: {},
       conn: undefined,
@@ -76,28 +81,28 @@ class ChooserApp extends Component {
 
   connectorDom() {
     if (this.state.connected) {
-      return <div >Connected to {this.state.conn.peer}</div >;
+      return <div>Connected to {this.state.conn.peer}</div>;
     } else {
       return (
-        <div >
-          <h1 >Connect to a monitor</h1 >
+        <div>
+          <h1>Connect to a monitor</h1>
           <input
             type="text"
             value={this.state.peerIp}
             onChange={this.handleChange}
           />
           <input type="button" value="Connect" onClick={this.connectToPeer} />
-        </div >
+        </div>
       );
     }
   }
 
   render() {
     return (
-      <div >
+      <div>
         {this.connectorDom()}
         <Chooser selectCat={this.selectCat} applyFilter={this.applyFilter} />
-      </div >
+      </div>
     );
   }
 }

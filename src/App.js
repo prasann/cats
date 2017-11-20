@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={Standalone} />
+          <Route exact path="/cats" component={Standalone} />
           <Route exact path="/cats/chooser" component={ChooserApp} />
           <Route exact path="/cats/viewer" component={ViewerApp} />
         </div>
