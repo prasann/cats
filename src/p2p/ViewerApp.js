@@ -15,7 +15,7 @@ const styles = {
   },
   monitorName: {
     color: "#3f51b5",
-    fontSize: "120%",
+    fontSize: "160%",
   }
 };
 
