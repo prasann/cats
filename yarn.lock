@@ -2995,6 +2995,13 @@ gzip-size@3.0.0:
   dependencies:
     duplexer "^0.1.1"
 
+haikunator@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/haikunator/-/haikunator-2.0.0.tgz#db740d7eff50e2e9c2f030ad15b195b4a6cbec3c"
+  dependencies:
+    lodash.defaults "^4.2.0"
+    random-seed "^0.3.0"
+
 handle-thing@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-1.2.5.tgz#fd7aad726bf1a5fd16dfc29b2f7a6601d27139c4"
@@ -3976,7 +3983,7 @@ json-stable-stringify@^1.0.1:
   dependencies:
     jsonify "~0.0.0"
 
-json-stringify-safe@~5.0.1:
+json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
 
@@ -5406,6 +5413,12 @@ rafl@~1.2.1:
   resolved "https://registry.yarnpkg.com/rafl/-/rafl-1.2.2.tgz#fe930f758211020d47e38815f5196a8be4150740"
   dependencies:
     global "~4.3.0"
+
+random-seed@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/random-seed/-/random-seed-0.3.0.tgz#d945f2e1f38f49e8d58913431b8bf6bb937556cd"
+  dependencies:
+    json-stringify-safe "^5.0.1"
 
 randomatic@^1.1.3:
   version "1.1.7"

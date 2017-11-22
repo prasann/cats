@@ -4,6 +4,7 @@
   "homepage": "/cats",
   "private": true,
   "dependencies": {
+    "haikunator": "^2.0.0",
     "material-ui": "next",
     "peerjs": "^0.3.14",
     "react": "^16.0.0",

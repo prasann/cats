@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Peer from "peerjs";
-import Viewer from "./viewer/Component";
+import Viewer from "../viewer/Component";
+import Haikunator from "haikunator";
 import { SnackbarContent } from 'material-ui/Snackbar';
 
+const haiku = new Haikunator();
 const styles = {
   container: {
     display: "grid",
@@ -10,6 +12,10 @@ const styles = {
   },
   viewerContainer: {
     marginTop: '50px',
+  },
+  monitorName: {
+    color: "#3f51b5",
+    fontSize: "120%",
   }
 };
 
@@ -17,14 +23,16 @@ const styles = {
 class ViewerApp extends Component {
   constructor() {
     super();
+    const monitorName = haiku.haikunate({ tokenLength: 0 });
     this.state = {
-      peer: new Peer("jeeboomba002", {
+      peer: new Peer(monitorName, {
         host: "peercats.herokuapp.com",
         secure: true,
         port: 443,
         key: "peerjs",
         debug: 3
       }),
+      monitorName: monitorName,
       data: {}
     };
     this.initPeer = this.initPeer.bind(this);
@@ -67,7 +75,8 @@ class ViewerApp extends Component {
         message={`Connected to ${this.state.conn.peer}`} />
     } else {
       return <div >
-        <h1 >Monitor Name</h1 >
+        <h1 >Monitor Name: <span style={styles.monitorName} >{this.state.monitorName}</span ></h1 >
+
       </div >
     }
   }

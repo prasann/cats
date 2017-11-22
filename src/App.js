@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Standalone from "./Standalone";
-import ChooserApp from "./ChooserApp";
-import ViewerApp from "./ViewerApp";
+import ChooserApp from "./p2p/ChooserApp";
+import ViewerApp from "./p2p/ViewerApp";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import "./App.css";

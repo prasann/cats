@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Chooser from "./chooser/Component";
+import Chooser from "../chooser/Component";
 import Peer from "peerjs";
 import Input from 'material-ui/Input';
 import Button from 'material-ui/Button';
@@ -54,7 +54,7 @@ class ChooserApp extends Component {
   }
 
   connectToPeer(event) {
-    const connection = this.state.peer.connect("jeeboomba002");
+    const connection = this.state.peer.connect(this.state.peerIp);
     if (connection) {
       this.setState(
         {
